@@ -1,17 +1,13 @@
 #pragma once
 
 #ifdef _DEBUG
-
-#include "bcm2835.h"
-#define RPI_GPIO_P1_15 22
-#define BCM2835_GPIO_FSEL_INPT 0x00
-#define BCM2835_GPIO_FSEL_OUTP 0x01
-#include <time.h>
-
-#endif
-
-#ifndef _DEBUG
-#include <bcm2835.h>
+	#include "bcm2835.h"
+	#define RPI_GPIO_P1_15 22
+	#define BCM2835_GPIO_FSEL_INPT 0x00
+	#define BCM2835_GPIO_FSEL_OUTP 0x01
+	#include <time.h>
+#else
+	#include <bcm2835.h>
 #endif
 
 #define INP 0
@@ -40,8 +36,7 @@ public:
 	}
 	~Transmitter()
 	{
-		amount--;
-		if (amount == 0)
+		if (--amount == 0)
 		{
 			bcm2835_close();
 			alr_init = false;
@@ -51,11 +46,6 @@ public:
 	int read()
 	{
 		return bcm2835_gpio_lev(pin);
-	}
-	static void close()
-	{
-		if (!init_err)
-			bcm2835_close();
 	}
 	static void sleep(size_t time)
 	{
