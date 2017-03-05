@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#ifdef _DEBUG
+#ifdef _WIN32
 #include <windows.h>
 #endif
 
@@ -26,10 +26,14 @@ int bcm2835_gpio_lev(int a)
 {
 	if (static_cast<double>(rand()) / static_cast<double>(RAND_MAX) < 0.5)
 		return 0;
-	else
-		return 1;
+	return 1;
 }
 void bcm2835_delay(int a)
 {
-	Sleep(a);
+	//Sleep(a);
+	return;
+}
+void bcm2835_gpio_write(int a, int b)
+{
+	return;
 }
