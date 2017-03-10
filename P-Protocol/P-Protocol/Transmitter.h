@@ -47,9 +47,10 @@ public:
 				bcm2835_gpio_fsel(in_pin, BCM2835_GPIO_FSEL_INPT);
 			if (out_pin != NOP)
 				bcm2835_gpio_fsel(out_pin, BCM2835_GPIO_FSEL_OUTP);
-
 			amount++;
 		}
+		else
+			fprintf(stdout, "ERROR: could not init bcm2835\n");
 
 		for (int i = 1, k = 0; k < 8; i *= 2, k++)
 			bitMask[k] = i;

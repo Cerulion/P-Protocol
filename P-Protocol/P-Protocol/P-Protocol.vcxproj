@@ -38,7 +38,10 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\Users\Aro\Documents\vs_dev_lib\vs_dev_lib\SDL ttf\SDL2_ttf-2.0.14\include;C:\Users\Aro\Documents\vs_dev_lib\vs_dev_lib\SDL_image\include;C:\Users\Aro\Documents\vs_dev_lib\vs_dev_lib\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Aro\Documents\vs_dev_lib\vs_dev_lib\SDL_image\lib\x86;C:\Users\Aro\Documents\vs_dev_lib\vs_dev_lib\SDL ttf\SDL2_ttf-2.0.14\lib\x86;C:\Users\Aro\Documents\vs_dev_lib\vs_dev_lib\lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -47,6 +50,8 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -67,8 +72,27 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ArcState.h" />
     <ClInclude Include="bcm2835.h" />
+    <ClInclude Include="color.h" />
+    <ClInclude Include="constants.h" />
+    <ClInclude Include="draw.h" />
+    <ClInclude Include="eventHandler.h" />
+    <ClInclude Include="exState.h" />
+    <ClInclude Include="General.h" />
+    <ClInclude Include="LButton.h" />
+    <ClInclude Include="LButtonSprite.h" />
+    <ClInclude Include="MenueState.h" />
+    <ClInclude Include="point.h" />
+    <ClInclude Include="Rect.h" />
+    <ClInclude Include="Render.h" />
+    <ClInclude Include="SDLrunner.h" />
+    <ClInclude Include="States.h" />
+    <ClInclude Include="stuff.h" />
+    <ClInclude Include="Surface.h" />
+    <ClInclude Include="texture.h" />
     <ClInclude Include="Transmitter.h" />
+    <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
