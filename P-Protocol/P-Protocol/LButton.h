@@ -3,7 +3,7 @@
 #include "point.h"
 #include "LButtonSprite.h"
 #include "Rect.h"
-#include "Texture.h"
+#include "texture.h"
 #include "Render.h"
 #include "constants.h"
 
