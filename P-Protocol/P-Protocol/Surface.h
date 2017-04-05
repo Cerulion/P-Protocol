@@ -10,7 +10,7 @@
 
 #include <stdio.h>
 
-#include "window.h"
+#include "Window.h"
 #include "Render.h"
 
 

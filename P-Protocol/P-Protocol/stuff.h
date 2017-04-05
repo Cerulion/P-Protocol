@@ -1,7 +1,12 @@
 #pragma once
 
 #include <stdio.h>
-#include <SDL.h>
+
+#ifdef _WIN32
+	#include <SDL.h>
+#else
+	#include <SDL2/SDL.h>
+#endif
 
 bool init(SDL_Window** window, SDL_Surface** surface, size_t sWidth, size_t sHeight)
 {

@@ -7,7 +7,7 @@
 #endif
 #include <stdio.h>
 
-#include "window.h"
+#include "Window.h"
 #include "Rect.h"
 #include "color.h"
 
