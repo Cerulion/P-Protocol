@@ -1,8 +1,11 @@
 #pragma once
 
-#include <SDL.h>
+#ifdef _WIN32
+	#include <SDL.h>
+#else
+	#include <SDL2/SDL.h>
+#endif
 #include <SDL_image.h>
-#include "draw.h"
 #include "render.h"
 #include "SDLrunner.h"
 #include "texture.h"
@@ -10,9 +13,3 @@
 #include "surface.h"
 #include "LButton.h"
 #include "LButtonSprite.h"
-
-class draw
-{
-private:
-
-};

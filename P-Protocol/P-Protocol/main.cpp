@@ -1,16 +1,19 @@
 #include <stdio.h>
-#include <SDL.h>
+
+#ifdef _WIN32
+	#include <SDL.h>
+#else
+	#include <SDL2/SDL.h>
+#endif
 
 #include "draw.h"
 #include "States.h"
+#include "constants.h"
 
 #include "Transmitter.h"
 
 #define INPUT_PIN RPI_GPIO_P1_15
 #define OUTPUT_PIN RPI_GPIO_P1_11
-
-#define SCREEN_WIDTH 320
-#define SCREEN_HEIGHT 240
 
 #define PULSE 25
 
@@ -42,6 +45,7 @@ int main(int argc, char* argv[])
 				{
 				case SDLK_q:
 					runner.q(true);
+					break;
 				default:
 					break;
 				}
@@ -56,7 +60,6 @@ int main(int argc, char* argv[])
 		ren.update();
 	}
 
-
 	Transmitter hans = Transmitter(INPUT_PIN, OUTPUT_PIN, PULSE);
 
 	/*while (1)
@@ -67,7 +70,7 @@ int main(int argc, char* argv[])
 
 
 #ifdef _WIN32
-	while (getchar() != 'q');
+	//while (getchar() != 'q');
 #endif
 	
 	return 0;
