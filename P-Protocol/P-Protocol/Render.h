@@ -10,6 +10,7 @@
 #include "Window.h"
 #include "Rect.h"
 #include "color.h"
+#include "Surface.h"
 
 class Render
 {
@@ -21,7 +22,22 @@ public:
 	Render(Window* pWindow)
 		:
 		//using vsync.. if you dont want to, then delete SDL_RENDERER_PRESENTVSYNC
+		//acclelerated renderer somehow doesnt work on my raspi :/ (SDL_RENDERER_ACCELERATED)
 		pRender(SDL_CreateRenderer(pWindow->getWindow(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC))
+	{
+		if (NULL == pRender)
+			printf("Renderer could not be initialized. SDL Error: %s", SDL_GetError());
+		else
+		{
+			SDL_SetRenderDrawColor(pRender, 0, 0, 0, 0xFF);
+
+			if (!(IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG))
+				printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
+		}
+	};
+	Render(Surface* pSurface)
+		:
+		pRender(SDL_CreateSoftwareRenderer(pSurface->getSurface()))
 	{
 		if (NULL == pRender)
 			printf("Renderer could not be initialized. SDL Error: %s", SDL_GetError());

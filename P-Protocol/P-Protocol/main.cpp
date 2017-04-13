@@ -25,8 +25,11 @@ int main(int argc, char* argv[])
 	
 	SDL runner;
 	Window wdw("hallo", SCREEN_WIDTH, SCREEN_HEIGHT);
-	Render ren(&wdw);
 	Surface frs(&wdw);
+	Render ren(&frs);
+
+	if (frs.getSurface() == NULL)
+		return 1;
 
 	MenueState menue(&ren, &runner, 0);
 	ArcState* currState = &menue;
@@ -57,12 +60,15 @@ int main(int argc, char* argv[])
 		currState->executeCode();
 		currState->draw();
 
+		SDL_UpdateWindowSurface(wdw.getWindow());
+
 		ren.update();
 	}
 
+	/*
 	Transmitter hans = Transmitter(INPUT_PIN, OUTPUT_PIN, PULSE);
 
-	/*while (1)
+	while (1)
 	{
 		hans.sendInt(170);
 		hans.sendInt(178);

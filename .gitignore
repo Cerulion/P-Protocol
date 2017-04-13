@@ -1,5 +1,7 @@
 Debug/
 Release/
+RadixSort/
+test/
 *.opensdf
 *.sdf
 *.suo
